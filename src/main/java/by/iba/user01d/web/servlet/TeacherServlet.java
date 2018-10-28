@@ -31,6 +31,7 @@ public class TeacherServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		final int id = STUDENTS.size()+1;
 		if(req.getParameter("formName").equals("add")){
 			final String fname = req.getParameter("firstName");
 			final String sname = req.getParameter("secondName");
@@ -38,16 +39,13 @@ public class TeacherServlet extends HttpServlet {
 			final int group = Integer.valueOf(groupNumber);
 			final String format = "Name: %s, Second name: %s, Group Number: %d";
 			System.out.println(String.format(format, fname, sname, group));
-			STUDENTS.add(new Student(fname, sname, group));
+			STUDENTS.add(new Student(fname, sname, group,id));
 			doGet(req, resp);
 		}
 		if(req.getParameter("formName").equals("delete")) {
-			for(int i=0;i<STUDENTS.size()+1;i++) {
-				if(req.getParameter("deleteButton")!=null) {
-					STUDENTS.remove(i);
+					int rid=Integer.valueOf(req.getParameter("id"));
+					STUDENTS.remove(rid-1);
 					doGet(req,resp);
 				}
 			}
-		}
 	}
-}

@@ -7,10 +7,12 @@ public class Student {
 	private String secondName;
 	private int groupNumber;
 	private int avgMark;
+	private int id;
 	
 	
-	public Student(String firstName, String secondName, int groupNumber) {
+	public Student(String firstName, String secondName, int groupNumber, int id) {
 		super();
+		this.id=id;
 		this.firstName = firstName;
 		this.secondName = secondName;
 		this.groupNumber = groupNumber;
@@ -31,6 +33,12 @@ public class Student {
 	}
 	public String getSecondName() {
 		return secondName;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	public void setSecondName(String secondName) {
 		this.secondName = secondName;

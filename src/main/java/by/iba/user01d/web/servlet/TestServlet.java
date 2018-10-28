@@ -31,13 +31,14 @@ public class TestServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		final int id = STUDENTS.size()+1;
 		final String fname = req.getParameter("firstName");
 		final String sname = req.getParameter("secondName");
 		final String groupNumber = req.getParameter("groupNumber");	
 		final int group = Integer.valueOf(groupNumber);
 		final String format = "Name: %s, Second name: %s, Group Number: %d";
 		System.out.println(String.format(format, fname, sname, group));
-		STUDENTS.add(new Student(fname, sname, group));
+		STUDENTS.add(new Student(fname, sname, group,id));
 		doGet(req, resp);
 	}
 }
